@@ -1,0 +1,30 @@
+# Step 1: Hardcoded stock prices dictionary
+stock_prices = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOGL": 2000,
+    "MSFT": 300
+}
+
+# Step 2: User input for stocks and quantities
+total_investment = 0
+
+while True:
+    stock = input("Enter stock symbol (or type 'done' to finish): ").upper()
+    if stock == "DONE":
+        break
+    if stock in stock_prices:
+        quantity = int(input(f"Enter quantity for {stock}: "))
+        total_investment += stock_prices[stock] * quantity
+    else:
+        print("Stock not found in our list.")
+
+# Step 3: Show result
+print(f"\nTotal Investment: ${total_investment}")
+
+# Step 4: Optional - Save to file
+save = input("Do you want to save the result to a file? (yes/no): ").lower()
+if save == "yes":
+    with open("portfolio.txt", "w") as file:
+        file.write(f"Total Investment: ${total_investment}\n")
+    print("Result saved to 'portfolio.txt'.")
