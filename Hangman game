@@ -1,0 +1,22 @@
+import random
+
+words = ["apple", "grape", "mango", "peach", "lemon"]
+word = random.choice(words)
+guess = ["_"] * len(word)
+tries = 6
+
+while tries > 0 and "_" in guess:
+    print(" ".join(guess))
+    ch = input("Guess: ")[0]
+    if ch in word:
+        for i in range(len(word)):
+            if word[i] == ch:
+                guess[i] = ch
+    else:
+        tries -= 1
+        print("Wrong! Left:", tries)
+
+if "_" not in guess:
+    print("You won:", word)
+else:
+    print("You lost! Word was:", word)
